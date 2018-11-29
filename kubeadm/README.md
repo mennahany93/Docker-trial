@@ -13,12 +13,12 @@
     
     Docker : install version 17.06 
     
-       *curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add - *
+       curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add - 
        
-       *sudo apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"*
+       sudo apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"
        
-       *sudo apt-get update*
+       sudo apt-get update
        
-       *sudo apt-get install docker-ce=17.06.0~ce-0~ubuntu*
+       sudo apt-get install docker-ce=17.06.0~ce-0~ubuntu
   
-2) 
+2) Run Kubeadm init : to start a kubernetes cluster 
