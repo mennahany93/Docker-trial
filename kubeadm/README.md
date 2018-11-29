@@ -12,9 +12,13 @@
     kubectl: the command line util to talk to your cluster.
     
     Docker : install version 17.06 
+    
        *curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add - *
+       
        *sudo apt-add-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"*
+       
        *sudo apt-get update*
+       
        *sudo apt-get install docker-ce=17.06.0~ce-0~ubuntu*
   
 2) 
