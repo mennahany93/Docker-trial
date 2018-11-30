@@ -30,3 +30,9 @@
        *kubectl taint nodes --all node-role.kubernetes.io/master-*
 
 5) to tear down setup use kubeadm reset 
+
+### verify that everything is running using
+
+kubectl get pods --all-namespaces
+
+kubectl get nodes to see master status
