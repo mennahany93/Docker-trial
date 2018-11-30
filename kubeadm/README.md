@@ -22,9 +22,11 @@
        sudo apt-get install docker-ce=17.06.0~ce-0~ubuntu
   
 2) Run Kubeadm init : to start a kubernetes cluster 
+**In order to use flannel add option --pod-network-cidr=10.244.0.0/16 to kubeadm init** 
 
 3) kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml 
 
 4) By default, your cluster will not schedule pods on the master for security reasons. If you want to be able to schedule pods on the master, e.g. for a single-machine Kubernetes cluster for development, run: 
        *kubectl taint nodes --all node-role.kubernetes.io/master-*
 
+5) to tear down setup use kubeadm reset 
