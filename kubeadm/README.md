@@ -25,4 +25,6 @@
 
 3) kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml 
 
+4) By default, your cluster will not schedule pods on the master for security reasons. If you want to be able to schedule pods on the master, e.g. for a single-machine Kubernetes cluster for development, run: 
+       *kubectl taint nodes --all node-role.kubernetes.io/master-*
 
