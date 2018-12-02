@@ -6,3 +6,6 @@ Debugging pods
 
 Connect to pod
 1) kubectl exec -it pod_name /bin/bash
+2) kubectl attach pod_name -i 
+
+kubectl port-forward pod_name 8080 
