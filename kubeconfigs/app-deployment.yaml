@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ruby-app
+  labels:
+    app: ruby-app
+spec:
+  ports:
+    - port: 3000
+  selector:
+    app: ruby-app
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ruby-app-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/home/project/app"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ruby-app-pv-claim
+  labels:
+    app: ruby-app
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: ruby-app
+  labels:
+    app: ruby-app
+spec:
+  selector:
+    matchLabels:
+      app: ruby-app
+  template:
+    metadata:
+      labels:
+        app: ruby-app
+    spec:
+      containers:
+      - image: rubyimage
+        name: ruby-app
+        command: ["bundle exec rails s -p 3000 -b '0.0.0.0'"]
+        ports:
+        - containerPort: 3000
+          name: ruby-app
+        volumeMounts:
+        - name: ruby-app-persistent-storage
+          mountPath: /var/lib/ruby-app
+      volumes:
+      - name: ruby-app-persistent-storage
+        persistentVolumeClaim:
+          claimName: ruby-app-pv-claim
