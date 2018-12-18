@@ -60,11 +60,11 @@ spec:
         env:
         - name: PGUSER
           value: postgres
-        -name: PGPASSWORD
-         valueFrom:
-          secretKeyRef:
-            name: pgpassword
-            key: PGPASSWORD
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pgpassword
+              key: PGPASSWORD
         ports:
         - containerPort: 5432
           name: postgres
