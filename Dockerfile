@@ -6,3 +6,5 @@ COPY app/Gemfile /myapp/Gemfile
 COPY app/Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 COPY app /myapp
+COPY init.sh ./
+CMD ./init.sh
