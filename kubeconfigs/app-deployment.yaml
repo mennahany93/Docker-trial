@@ -61,11 +61,11 @@ spec:
         env:
         - name: PGUSER
           value: postgres
-        -name: PGPASSWORD
-         valueFrom:
-          secretKeyRef:
-            name: pgpassword
-            key: PGPASSWORD
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pgpassword
+              key: PGPASSWORD
         #command: ["bundle exec rails s -p 3000 -b '0.0.0.0'"]
         ports:
         - containerPort: 3000
